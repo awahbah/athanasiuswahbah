@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Automating the Identity Lifecycle — Athanasius Wahbah</title>
+    <meta
+      name="description"
+      content="Athanasius Wahbah on driving user provisioning from the HR system of record — automating joiner, mover, and leaver so access is correct by default."
+    />
+    <meta name="author" content="Athanasius Wahbah" />
+    <link
+      rel="canonical"
+      href="https://athanasiuswahbah.com/posts/automating-the-identity-lifecycle.html"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Automating the Identity Lifecycle: Joiner, Mover, Leaver Without the Tickets",
+        "author": {
+          "@type": "Person",
+          "name": "Athanasius Wahbah",
+          "url": "https://athanasiuswahbah.com/"
+        },
+        "datePublished": "2026-04-12",
+        "mainEntityOfPage": "https://athanasiuswahbah.com/posts/automating-the-identity-lifecycle.html"
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav class="site">
+      <div class="wrap">
+        <a class="brand" href="/">Athanasius Wahbah</a>
+        <div class="links">
+          <a href="/about.html">About</a>
+          <a href="/experience.html">Experience</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrap">
+      <article class="post">
+        <div class="date">April 12, 2026</div>
+        <h1>
+          Automating the Identity Lifecycle: Joiner, Mover, Leaver Without the
+          Tickets
+        </h1>
+        <p>
+          Most access problems aren't really access problems. They're timing
+          problems. Someone joins and waits two days for the right groups.
+          Someone changes teams and keeps the old access for a year. Someone
+          leaves and an account lingers. Each of these is a ticket, a human, and
+          a delay — and every delay is risk.
+        </p>
+
+        <h2>The system of record should drive provisioning</h2>
+        <p>
+          The fix is to stop treating identity as something the help desk
+          assembles by hand and start treating it as a function of the HR system
+          of record. When HR marks someone hired, moved, or terminated, that
+          event should flow automatically into the directory — Microsoft Entra
+          ID in my case — and produce exactly the right group memberships,
+          application access, and license assignment. No ticket. No
+          interpretation.
+        </p>
+
+        <h2>Make access correct by default</h2>
+        <p>
+          The goal I aim for is "correct by default." A role and department,
+          combined with a clear mapping to groups and applications, should fully
+          determine someone's baseline access. Exceptions still exist, but they
+          become the rare, reviewed case rather than the norm. The mapping
+          itself becomes the thing you govern, instead of thousands of
+          individual grants.
+        </p>
+
+        <h2>Offboarding is where the risk hides</h2>
+        <p>
+          Joiner automation gets the attention because it's visible and people
+          feel the speed. But leaver automation is where the real exposure
+          lives. An automated, immediate offboarding — disable, revoke sessions,
+          reassign or preserve data, handle any legal hold — closes the window
+          that manual processes leave open. Build this path first if you can
+          only build one.
+        </p>
+
+        <h2>Build vs. buy</h2>
+        <p>
+          Commercial identity-governance platforms do this well, and at a
+          certain scale they're the right answer. But they carry six-figure
+          annual costs and significant implementation overhead. For many
+          organizations, a focused integration between the HRIS and the
+          directory delivers the lifecycle automation that actually matters at a
+          fraction of the cost — and you own every line of it. That's the path
+          I've taken, and it's held up.
+        </p>
+
+        <p style="margin-top: 28px">
+          <a href="/writing.html">&larr; More writing</a>
+        </p>
+      </article>
+    </div>
+
+    <footer class="site">
+      <div class="wrap">
+        &copy; <span id="y"></span> Athanasius Wahbah &middot; Santa Monica, CA
+      </div>
+    </footer>
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

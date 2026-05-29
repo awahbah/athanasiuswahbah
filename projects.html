@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects — Athanasius Wahbah</title>
+    <meta
+      name="description"
+      content="Selected work by Athanasius Wahbah — identity lifecycle automation, cloud identity migration tooling, and an internal IT observability platform."
+    />
+    <meta name="author" content="Athanasius Wahbah" />
+    <link rel="canonical" href="https://athanasiuswahbah.com/projects.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav class="site">
+      <div class="wrap">
+        <a class="brand" href="/">Athanasius Wahbah</a>
+        <div class="links">
+          <a href="/about.html">About</a>
+          <a href="/experience.html">Experience</a>
+          <a href="/projects.html" aria-current="page">Projects</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrap">
+      <h1 class="page-title">Selected Work</h1>
+      <main>
+        <section>
+          <p class="lead">
+            A few of the systems I've designed and built. Where the details are
+            proprietary I describe the capability rather than the internals.
+          </p>
+
+          <div class="role">
+            <h3>Identity Lifecycle Automation Platform</h3>
+            <p>
+              An integration between an HR system of record and Microsoft Entra
+              ID that automates the full employee lifecycle — onboarding, role
+              and department changes, and offboarding — with safeguards and
+              legal-hold handling built in. It replaces six-figure commercial
+              identity-governance tooling and makes access correct by default
+              rather than dependent on manual tickets. Built in Python and
+              deployed on Google Cloud Run.
+            </p>
+          </div>
+
+          <div class="role">
+            <h3>Cloud Identity Migration Tooling</h3>
+            <p>
+              A toolset that converts users from a hybrid identity model to
+              cloud-only Entra ID safely and reversibly, with an embedded AI
+              diagnostic assistant the help desk uses to triage issues in real
+              time. Reduced a fragile, manual migration into a repeatable,
+              low-risk operation.
+            </p>
+          </div>
+
+          <div class="role">
+            <h3>IT Observability &amp; Operations Platform</h3>
+            <p>
+              An internal platform that ingests data from more than ten
+              enterprise systems — identity, devices, ticketing, collaboration,
+              security, and source control — into a single real-time view of
+              organizational IT and security health. Built with FastAPI and
+              React on Google Cloud Run and Cloud SQL.
+            </p>
+          </div>
+
+          <p>
+            More of my code and open work is on
+            <a href="https://github.com/awahbah" rel="me">GitHub</a>.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <footer class="site">
+      <div class="wrap">
+        &copy; <span id="y"></span> Athanasius Wahbah &middot; Santa Monica, CA
+      </div>
+    </footer>
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

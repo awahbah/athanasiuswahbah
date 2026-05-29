@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Build vs. Buy: When an Internal Tool Beats Commercial Software —
+      Athanasius Wahbah
+    </title>
+    <meta
+      name="description"
+      content="Athanasius Wahbah on a practical framework for deciding when building an internal tool beats buying commercial software."
+    />
+    <meta name="author" content="Athanasius Wahbah" />
+    <link
+      rel="canonical"
+      href="https://athanasiuswahbah.com/posts/build-vs-buy-internal-tools.html"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Build vs. Buy: When an Internal Tool Beats Commercial Software",
+        "author": {
+          "@type": "Person",
+          "name": "Athanasius Wahbah",
+          "url": "https://athanasiuswahbah.com/"
+        },
+        "datePublished": "2026-03-08",
+        "mainEntityOfPage": "https://athanasiuswahbah.com/posts/build-vs-buy-internal-tools.html"
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav class="site">
+      <div class="wrap">
+        <a class="brand" href="/">Athanasius Wahbah</a>
+        <div class="links">
+          <a href="/about.html">About</a>
+          <a href="/experience.html">Experience</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrap">
+      <article class="post">
+        <div class="date">March 8, 2026</div>
+        <h1>Build vs. Buy: When an Internal Tool Beats Commercial Software</h1>
+        <p>
+          "Build vs. buy" gets argued as a matter of taste. It isn't. It's a
+          decision with a defensible answer most of the time, if you ask the
+          right questions in the right order.
+        </p>
+
+        <h2>Start with what's actually core</h2>
+        <p>
+          Buy the things that are hard, commoditized, and not your
+          differentiator — email, the operating directory, the database engine.
+          Nobody should be writing their own identity provider. The question is
+          only ever about the layer on top: the glue, the workflow, the
+          integration that's specific to how your organization actually runs.
+        </p>
+
+        <h2>Three questions that decide it</h2>
+        <ul>
+          <li>
+            <strong
+              >Does a product fit the workflow, or would we bend the workflow to
+              the product?</strong
+            >
+            Bending the org to fit a tool is a cost most buyers never price in.
+          </li>
+          <li>
+            <strong
+              >What's the real total cost of the commercial option?</strong
+            >
+            License plus implementation plus the services to keep it configured.
+            For a lot of governance and automation tooling, that's six figures a
+            year and a multi-month rollout.
+          </li>
+          <li>
+            <strong
+              >Can a focused internal build cover the part that matters in
+              weeks, not quarters?</strong
+            >
+            If the valuable 80% is a well-scoped integration, building it is
+            often cheaper, faster, and a perfect fit.
+          </li>
+        </ul>
+
+        <h2>The hidden asset: you own it</h2>
+        <p>
+          When you build, the institutional knowledge stays in-house, the
+          roadmap is yours, and there's no renewal negotiation where leverage
+          quietly shifts to the vendor. The flip side is real: you own the
+          maintenance too. So build things that are stable in scope and central
+          to your operation, and buy the things that churn or sprawl.
+        </p>
+
+        <h2>A bias toward building — with discipline</h2>
+        <p>
+          My instinct leans toward building, because the things I tend to need
+          are exactly the org-specific glue that products fit poorly. But the
+          discipline matters: build narrowly, document clearly, and be honest
+          about what you're signing up to maintain. Done that way, an internal
+          tool isn't technical debt — it's leverage.
+        </p>
+
+        <p style="margin-top: 28px">
+          <a href="/writing.html">&larr; More writing</a>
+        </p>
+      </article>
+    </div>
+
+    <footer class="site">
+      <div class="wrap">
+        &copy; <span id="y"></span> Athanasius Wahbah &middot; Santa Monica, CA
+      </div>
+    </footer>
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
