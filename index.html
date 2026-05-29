@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary SEO: name in title + description so this ranks for the name query -->
+    <title>
+      Athanasius Wahbah — Infrastructure, Identity &amp; Platform Engineering
+    </title>
+    <meta
+      name="description"
+      content="Athanasius Wahbah is a technology engineer in Santa Monica, California, focused on identity and access management, cloud infrastructure, and internal platform engineering."
+    />
+    <meta name="author" content="Athanasius Wahbah" />
+    <link rel="canonical" href="https://athanasiuswahbah.com/" />
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Athanasius Wahbah" />
+    <meta
+      property="og:description"
+      content="Infrastructure, identity, and platform engineering. Santa Monica, CA."
+    />
+    <meta property="og:url" content="https://athanasiuswahbah.com/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@athanasius_w" />
+
+    <!-- Structured data: tells Google this domain IS this person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Athanasius Wahbah",
+        "alternateName": ["Anthanasius Wahbah", "Athanasius Antonios Wahbah"],
+        "jobTitle": "Infrastructure & Platform Engineer",
+        "url": "https://athanasiuswahbah.com/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Santa Monica",
+          "addressRegion": "CA",
+          "addressCountry": "US"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "California State University, Fullerton"
+        },
+        "knowsAbout": [
+          "Identity and Access Management",
+          "Cloud Infrastructure",
+          "AWS",
+          "Google Cloud",
+          "Platform Engineering",
+          "Security Operations",
+          "Automation"
+        ],
+        "sameAs": [
+          "https://github.com/awahbah",
+          "https://twitter.com/athanasius_w",
+          "https://www.linkedin.com/in/athanasiusw"
+        ]
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #0d0f12;
+        --panel: #14171c;
+        --ink: #eef0f3;
+        --muted: #9aa3ad;
+        --line: #252a31;
+        --accent: #7aa2ff;
+        --accent-soft: #1b2435;
+        --serif: "Newsreader", Georgia, serif;
+        --sans: "Inter", system-ui, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--sans);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      header {
+        padding: 120px 0 64px;
+      }
+      .eyebrow {
+        font-size: 13px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 22px;
+      }
+      h1 {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: clamp(42px, 8vw, 68px);
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+      }
+      .tagline {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: clamp(20px, 3.4vw, 26px);
+        color: var(--muted);
+        margin-top: 18px;
+      }
+
+      section {
+        padding: 40px 0;
+        border-top: 1px solid var(--line);
+      }
+      h2 {
+        font-size: 13px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 17px;
+        color: #d6dae0;
+        margin-bottom: 16px;
+      }
+      .lead {
+        font-family: var(--serif);
+        font-size: 20px;
+        color: var(--ink);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 6px;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 18px 20px;
+      }
+      .card h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+      .card span {
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      ul.facts {
+        list-style: none;
+      }
+      ul.facts li {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 16px;
+      }
+      ul.facts li:last-child {
+        border-bottom: none;
+      }
+      ul.facts .k {
+        color: var(--muted);
+      }
+      ul.facts .v {
+        text-align: right;
+        color: var(--ink);
+      }
+
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 4px;
+      }
+      .links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--accent-soft);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 10px 18px;
+        color: var(--ink);
+        font-size: 15px;
+        font-weight: 500;
+      }
+      .links a:hover {
+        border-color: var(--accent);
+        text-decoration: none;
+      }
+
+      footer {
+        padding: 48px 0 80px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 560px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        header {
+          padding: 80px 0 48px;
+        }
+        ul.facts li {
+          flex-direction: column;
+          gap: 2px;
+        }
+        ul.facts .v {
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="eyebrow">Santa Monica, California</div>
+        <h1>Athanasius Wahbah</h1>
+        <div class="tagline">
+          Infrastructure, identity, and platform engineering.
+        </div>
+      </header>
+
+      <section>
+        <h2>About</h2>
+        <p class="lead">
+          I build and run the systems that keep modern technology organizations
+          operating — identity, cloud infrastructure, and the internal platforms
+          teams depend on every day.
+        </p>
+        <p>
+          Over roughly fifteen years in technology, my work has spanned identity
+          and access management, cloud infrastructure across AWS and Google
+          Cloud, security operations, and the design of internal tools and
+          automation. I am at my best upstream of a problem: designing the
+          system, building it cleanly, and owning the outcome end to end.
+        </p>
+        <!-- EDIT: add a sentence or two in your own words if you'd like more depth here. -->
+      </section>
+
+      <section>
+        <h2>Focus Areas</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Identity &amp; Access</h3>
+            <span>Entra ID, SSO/SAML, SCIM, lifecycle automation</span>
+          </div>
+          <div class="card">
+            <h3>Cloud Infrastructure</h3>
+            <span>AWS &amp; Google Cloud, Terraform, containers</span>
+          </div>
+          <div class="card">
+            <h3>Platform Engineering</h3>
+            <span>Internal tools, integrations, automation</span>
+          </div>
+          <div class="card">
+            <h3>Security Operations</h3>
+            <span>Incident response, investigations, controls</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Credentials</h2>
+        <ul class="facts">
+          <li>
+            <span class="k">Education</span
+            ><span class="v"
+              >B.S. Computer Science — California State University,
+              Fullerton</span
+            >
+          </li>
+          <li>
+            <span class="k">Certification</span
+            ><span class="v"
+              >AWS Certified Solutions Architect – Associate</span
+            >
+          </li>
+          <li>
+            <span class="k">Certification</span
+            ><span class="v">Jamf Certified (300)</span>
+          </li>
+          <li>
+            <span class="k">Certification</span
+            ><span class="v">Certified ScrumMaster (CSM)</span>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Elsewhere</h2>
+        <div class="links">
+          <a href="https://github.com/awahbah" rel="me">GitHub</a>
+          <a href="https://www.linkedin.com/in/athanasiusw" rel="me"
+            >LinkedIn</a
+          >
+          <a href="https://twitter.com/athanasius_w" rel="me">X / Twitter</a>
+        </div>
+      </section>
+
+      <footer>
+        &copy; <span id="y"></span> Athanasius Wahbah · Santa Monica, CA
+      </footer>
+    </div>
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
