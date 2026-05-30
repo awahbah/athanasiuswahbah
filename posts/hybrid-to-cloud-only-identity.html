@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Hybrid to Cloud-Only Identity: A Migration Playbook — Athanasius Wahbah
+    </title>
+    <meta
+      name="description"
+      content="Athanasius Wahbah on migrating from hybrid Active Directory to cloud-only Entra ID safely and reversibly, without breaking the help desk."
+    />
+    <meta name="author" content="Athanasius Wahbah" />
+    <link
+      rel="canonical"
+      href="https://athanasiuswahbah.com/posts/hybrid-to-cloud-only-identity.html"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Hybrid to Cloud-Only Identity: A Migration Playbook",
+        "author": {
+          "@type": "Person",
+          "name": "Athanasius Wahbah",
+          "url": "https://athanasiuswahbah.com/"
+        },
+        "datePublished": "2026-04-26",
+        "mainEntityOfPage": "https://athanasiuswahbah.com/posts/hybrid-to-cloud-only-identity.html"
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav class="site">
+      <div class="wrap">
+        <a class="brand" href="/">Athanasius Wahbah</a>
+        <div class="links">
+          <a href="/about.html">About</a>
+          <a href="/experience.html">Experience</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="wrap">
+      <article class="post">
+        <div class="date">April 26, 2026</div>
+        <h1>Hybrid to Cloud-Only Identity: A Migration Playbook</h1>
+        <p>
+          Plenty of organizations still anchor identity to an on-premises Active
+          Directory they no longer need, syncing it up to Entra ID out of habit
+          and inertia. Going cloud-only removes a whole class of fragility, but
+          the migration touches every user, so it has to be done as a
+          reversible, low-drama operation rather than a flag day.
+        </p>
+
+        <h2>Inventory what actually depends on AD</h2>
+        <p>
+          Before moving anyone, find what truly still needs the on-prem
+          directory: legacy apps using LDAP or Kerberos, file shares, print,
+          anything bound to a domain. Most of these have a cloud-native answer
+          now, but you can't plan around dependencies you haven't enumerated.
+          This step is unglamorous and it's where the whole project succeeds or
+          fails.
+        </p>
+
+        <h2>Migrate in waves, with a rollback for each</h2>
+        <p>
+          Convert users in small cohorts, not all at once. Each wave should have
+          a clean rollback so a surprise affects a handful of people for an
+          hour, never the whole company for a day. The goal is that any single
+          wave is boring.
+        </p>
+
+        <h2>Watch the identifiers</h2>
+        <p>
+          The sharp edges in identity migrations are almost always mismatched
+          identifiers — how a user is keyed in the directory versus in
+          downstream systems like MFA, single sign-on, and device management. A
+          username that's a bare account name in one system and a full UPN in
+          another will silently create duplicates or lock people out. Map the
+          identifier flow end to end before you cut anyone over.
+        </p>
+
+        <h2>Give the help desk a tool, not a runbook</h2>
+        <p>
+          A migration generates a predictable set of support issues. Rather than
+          handing the help desk a long document, give them a tool that diagnoses
+          the common failures and tells them the fix. It turns a stressful
+          cutover into a routine one and keeps the project moving at the pace of
+          the people doing the work.
+        </p>
+
+        <p style="margin-top: 28px">
+          <a href="/writing.html">&larr; More writing</a>
+        </p>
+      </article>
+    </div>
+
+    <footer class="site">
+      <div class="wrap">
+        &copy; <span id="y"></span> Athanasius Wahbah &middot; Santa Monica, CA
+      </div>
+    </footer>
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
