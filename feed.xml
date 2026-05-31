@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Athanasius Wahbah — Writing</title>
+    <link>https://athanasiuswahbah.com/writing.html</link>
+    <atom:link href="https://athanasiuswahbah.com/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Notes by Athanasius Wahbah on identity and access management, cloud infrastructure, automation, and building internal tools.</description>
+    <language>en-us</language>
+    <managingEditor>hello@athanasiuswahbah.com (Athanasius Wahbah)</managingEditor>
+    <webMaster>hello@athanasiuswahbah.com (Athanasius Wahbah)</webMaster>
+
+    <item>
+      <title>Five Lessons from Running Incident Response</title>
+      <link>https://athanasiuswahbah.com/posts/lessons-from-incident-response.html</link>
+      <guid isPermaLink="true">https://athanasiuswahbah.com/posts/lessons-from-incident-response.html</guid>
+      <pubDate>Sun, 17 May 2026 09:00:00 GMT</pubDate>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Athanasius Wahbah</dc:creator>
+      <description>What actually matters when you're running a security incident — preparation, containment, and communication.</description>
+      <content:encoded><![CDATA[
+        <p>An incident is a bad time to figure out how you respond to incidents. The teams that come through cleanly are almost never the ones with the cleverest tools — they're the ones that decided how they'd operate before anything was on fire. A few things I keep coming back to.</p>
+        <h2>1. The preparation is the work</h2>
+        <p>By the time an alert fires, most of the outcome is already determined by what you set up beforehand: logging that actually captures what you'll need, access you can revoke instantly, backups you've tested restoring. You can't build these under pressure. Treat the calm periods as the real preparation.</p>
+        <h2>2. Contain before you investigate</h2>
+        <p>The urge to fully understand an incident before acting is natural and often wrong. If an account is compromised, disable it and revoke its sessions now; you can reconstruct the timeline after the bleeding stops. Containment buys you the time to investigate calmly.</p>
+        <h2>3. Communication is half the job</h2>
+        <p>A quiet, competent technical response that nobody can see reads, to a nervous organization, like nothing is happening. Give leadership a steady cadence of plain-language updates: what you know, what you're doing, what you need. It's not overhead — it's what keeps the response from being second-guessed.</p>
+        <h2>4. Write it down as you go</h2>
+        <p>A contemporaneous timeline — who did what, when, and why — is worth more than memory, both for the post-incident review and for any legal or compliance follow-up. Capture it live; you will not reconstruct it accurately later.</p>
+        <h2>5. The review is where you actually get better</h2>
+        <p>The point of a blameless post-incident review isn't to relive the bad day. It's to turn each incident into one or two concrete changes that make the next one smaller. An incident you don't learn from is just damage.</p>
+        <p><em>Originally published at <a href="https://athanasiuswahbah.com/posts/lessons-from-incident-response.html">athanasiuswahbah.com</a> by Athanasius Wahbah.</em></p>
+      ]]></content:encoded>
+    </item>
+
+    <item>
+      <title>Designing Conditional Access People Don't Fight</title>
+      <link>https://athanasiuswahbah.com/posts/conditional-access-that-works.html</link>
+      <guid isPermaLink="true">https://athanasiuswahbah.com/posts/conditional-access-that-works.html</guid>
+      <pubDate>Sun, 03 May 2026 09:00:00 GMT</pubDate>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Athanasius Wahbah</dc:creator>
+      <description>Secure policies that don't train everyone to invent workarounds.</description>
+      <content:encoded><![CDATA[
+        <p>Conditional Access is the most powerful control most organizations own and the one most likely to be quietly worked around. The failure mode isn't a weak policy — it's a policy so blunt that people invent shadow workarounds, and your real security posture ends up worse than before you tightened it.</p>
+        <h2>Secure the risk, not the person</h2>
+        <p>The instinct is to add friction everywhere. The better model is to spend friction where the risk actually is. A sign-in from a managed device on a known network is low risk; demanding step-up authentication for it just trains people to dismiss prompts. A sign-in from an unmanaged device in a new country is where the cost of a challenge is worth paying. Conditional Access is good at exactly this kind of targeting — use it for that, not as a blanket tax.</p>
+        <h2>Make the compliant path the easy path</h2>
+        <p>If the secure way to work is also the most convenient way, you've won. Device compliance, single sign-on, and passwordless authentication aren't just security features — they're the thing that makes "do it the right way" frictionless, which is what actually stops the workarounds.</p>
+        <h2>Stage everything in report-only</h2>
+        <p>Never ship a Conditional Access change straight to enforcement. Report-only mode tells you exactly who a policy would have blocked before it blocks anyone. The number is almost always larger and stranger than you expect — service accounts, legacy clients, an executive's travel pattern. Find those in report-only, not in a flood of help-desk tickets.</p>
+        <h2>Leave a break-glass path</h2>
+        <p>Every Conditional Access deployment needs excluded emergency-access accounts, monitored and tightly controlled. The day you lock yourself out of your own tenant is the day you learn why. Build the break-glass path first, test it, and alert on its use.</p>
+        <p><em>Originally published at <a href="https://athanasiuswahbah.com/posts/conditional-access-that-works.html">athanasiuswahbah.com</a> by Athanasius Wahbah.</em></p>
+      ]]></content:encoded>
+    </item>
+
+    <item>
+      <title>Hybrid to Cloud-Only Identity: A Migration Playbook</title>
+      <link>https://athanasiuswahbah.com/posts/hybrid-to-cloud-only-identity.html</link>
+      <guid isPermaLink="true">https://athanasiuswahbah.com/posts/hybrid-to-cloud-only-identity.html</guid>
+      <pubDate>Sun, 26 Apr 2026 09:00:00 GMT</pubDate>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Athanasius Wahbah</dc:creator>
+      <description>Moving off on-prem Active Directory to cloud-only Entra ID safely and reversibly.</description>
+      <content:encoded><![CDATA[
+        <p>Plenty of organizations still anchor identity to an on-premises Active Directory they no longer need, syncing it up to Entra ID out of habit and inertia. Going cloud-only removes a whole class of fragility, but the migration touches every user, so it has to be done as a reversible, low-drama operation rather than a flag day.</p>
+        <h2>Inventory what actually depends on AD</h2>
+        <p>Before moving anyone, find what truly still needs the on-prem directory: legacy apps using LDAP or Kerberos, file shares, print, anything bound to a domain. Most of these have a cloud-native answer now, but you can't plan around dependencies you haven't enumerated. This step is unglamorous and it's where the whole project succeeds or fails.</p>
+        <h2>Migrate in waves, with a rollback for each</h2>
+        <p>Convert users in small cohorts, not all at once. Each wave should have a clean rollback so a surprise affects a handful of people for an hour, never the whole company for a day. The goal is that any single wave is boring.</p>
+        <h2>Watch the identifiers</h2>
+        <p>The sharp edges in identity migrations are almost always mismatched identifiers — how a user is keyed in the directory versus in downstream systems like MFA, single sign-on, and device management. A username that's a bare account name in one system and a full UPN in another will silently create duplicates or lock people out. Map the identifier flow end to end before you cut anyone over.</p>
+        <h2>Give the help desk a tool, not a runbook</h2>
+        <p>A migration generates a predictable set of support issues. Rather than handing the help desk a long document, give them a tool that diagnoses the common failures and tells them the fix. It turns a stressful cutover into a routine one and keeps the project moving at the pace of the people doing the work.</p>
+        <p><em>Originally published at <a href="https://athanasiuswahbah.com/posts/hybrid-to-cloud-only-identity.html">athanasiuswahbah.com</a> by Athanasius Wahbah.</em></p>
+      ]]></content:encoded>
+    </item>
+
+    <item>
+      <title>Automating the Identity Lifecycle: Joiner, Mover, Leaver Without the Tickets</title>
+      <link>https://athanasiuswahbah.com/posts/automating-the-identity-lifecycle.html</link>
+      <guid isPermaLink="true">https://athanasiuswahbah.com/posts/automating-the-identity-lifecycle.html</guid>
+      <pubDate>Sun, 12 Apr 2026 09:00:00 GMT</pubDate>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Athanasius Wahbah</dc:creator>
+      <description>Why provisioning should be driven by the HR system of record, and how to make access correct by default.</description>
+      <content:encoded><![CDATA[
+        <p>Most access problems aren't really access problems. They're timing problems. Someone joins and waits two days for the right groups. Someone changes teams and keeps the old access for a year. Someone leaves and an account lingers. Each of these is a ticket, a human, and a delay — and every delay is risk.</p>
+        <h2>The system of record should drive provisioning</h2>
+        <p>The fix is to stop treating identity as something the help desk assembles by hand and start treating it as a function of the HR system of record. When HR marks someone hired, moved, or terminated, that event should flow automatically into the directory — Microsoft Entra ID in my case — and produce exactly the right group memberships, application access, and license assignment. No ticket. No interpretation.</p>
+        <h2>Make access correct by default</h2>
+        <p>The goal I aim for is "correct by default." A role and department, combined with a clear mapping to groups and applications, should fully determine someone's baseline access. Exceptions still exist, but they become the rare, reviewed case rather than the norm. The mapping itself becomes the thing you govern, instead of thousands of individual grants.</p>
+        <h2>Offboarding is where the risk hides</h2>
+        <p>Joiner automation gets the attention because it's visible and people feel the speed. But leaver automation is where the real exposure lives. An automated, immediate offboarding — disable, revoke sessions, reassign or preserve data, handle any legal hold — closes the window that manual processes leave open. Build this path first if you can only build one.</p>
+        <h2>Build vs. buy</h2>
+        <p>Commercial identity-governance platforms do this well, and at a certain scale they're the right answer. But they carry six-figure annual costs and significant implementation overhead. For many organizations, a focused integration between the HRIS and the directory delivers the lifecycle automation that actually matters at a fraction of the cost — and you own every line of it. That's the path I've taken, and it's held up.</p>
+        <p><em>Originally published at <a href="https://athanasiuswahbah.com/posts/automating-the-identity-lifecycle.html">athanasiuswahbah.com</a> by Athanasius Wahbah.</em></p>
+      ]]></content:encoded>
+    </item>
+
+    <item>
+      <title>Build vs. Buy: When an Internal Tool Beats Commercial Software</title>
+      <link>https://athanasiuswahbah.com/posts/build-vs-buy-internal-tools.html</link>
+      <guid isPermaLink="true">https://athanasiuswahbah.com/posts/build-vs-buy-internal-tools.html</guid>
+      <pubDate>Sun, 08 Mar 2026 09:00:00 GMT</pubDate>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Athanasius Wahbah</dc:creator>
+      <description>A practical framework for deciding when it's cheaper and safer to build the thing yourself.</description>
+      <content:encoded><![CDATA[
+        <p>"Build vs. buy" gets argued as a matter of taste. It isn't. It's a decision with a defensible answer most of the time, if you ask the right questions in the right order.</p>
+        <h2>Start with what's actually core</h2>
+        <p>Buy the things that are hard, commoditized, and not your differentiator — email, the operating directory, the database engine. Nobody should be writing their own identity provider. The question is only ever about the layer on top: the glue, the workflow, the integration that's specific to how your organization actually runs.</p>
+        <h2>Three questions that decide it</h2>
+        <ul>
+          <li><strong>Does a product fit the workflow, or would we bend the workflow to the product?</strong> Bending the org to fit a tool is a cost most buyers never price in.</li>
+          <li><strong>What's the real total cost of the commercial option?</strong> License plus implementation plus the services to keep it configured. For a lot of governance and automation tooling, that's six figures a year and a multi-month rollout.</li>
+          <li><strong>Can a focused internal build cover the part that matters in weeks, not quarters?</strong> If the valuable 80% is a well-scoped integration, building it is often cheaper, faster, and a perfect fit.</li>
+        </ul>
+        <h2>The hidden asset: you own it</h2>
+        <p>When you build, the institutional knowledge stays in-house, the roadmap is yours, and there's no renewal negotiation where leverage quietly shifts to the vendor. The flip side is real: you own the maintenance too. So build things that are stable in scope and central to your operation, and buy the things that churn or sprawl.</p>
+        <h2>A bias toward building — with discipline</h2>
+        <p>My instinct leans toward building, because the things I tend to need are exactly the org-specific glue that products fit poorly. But the discipline matters: build narrowly, document clearly, and be honest about what you're signing up to maintain. Done that way, an internal tool isn't technical debt — it's leverage.</p>
+        <p><em>Originally published at <a href="https://athanasiuswahbah.com/posts/build-vs-buy-internal-tools.html">athanasiuswahbah.com</a> by Athanasius Wahbah.</em></p>
+      ]]></content:encoded>
+    </item>
+
+  </channel>
+</rss>
