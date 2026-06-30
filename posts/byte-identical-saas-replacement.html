@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Byte-Identical: Replacing a SaaS Without Breaking the Pipeline —
+      Athanasius Wahbah
+    </title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta
+      name="description"
+      content="Athanasius Wahbah on replacing a commercial SaaS with an internal platform that produced byte-identical output — making the cutover provably safe instead of a leap of faith."
+    />
+    <meta name="author" content="Athanasius Wahbah" />
+    <link
+      rel="canonical"
+      href="https://athanasiuswahbah.com/posts/byte-identical-saas-replacement.html"
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="Byte-Identical: Replacing a SaaS Without Breaking the Pipeline — Athanasius Wahbah"
+    />
+    <meta
+      property="og:description"
+      content="Replacing a commercial SaaS with an internal platform that produced byte-identical output — making the cutover provably safe."
+    />
+    <meta
+      property="og:url"
+      content="https://athanasiuswahbah.com/posts/byte-identical-saas-replacement.html"
+    />
+    <meta
+      property="og:image"
+      content="https://athanasiuswahbah.com/headshot.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Byte-Identical: Replacing a SaaS Without Breaking the Pipeline",
+        "author": {
+          "@type": "Person",
+          "name": "Athanasius Wahbah",
+          "url": "https://athanasiuswahbah.com/"
+        },
+        "datePublished": "2026-06-22",
+        "mainEntityOfPage": "https://athanasiuswahbah.com/posts/byte-identical-saas-replacement.html"
+      }
+    </script>
+    <link rel="stylesheet" href="/style.css?v=3" />
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "xeylablajo");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <nav class="site">
+      <div class="wrap">
+        <a class="brand" href="/"
+          ><span class="mark" aria-hidden="true"></span>Athanasius Wahbah</a
+        >
+        <div class="links">
+          <a href="/about.html">About</a>
+          <a href="/experience.html">Experience</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main id="main">
+      <div class="wrap">
+        <article class="post">
+          <div class="date">June 22, 2026</div>
+          <h1>
+            Byte-Identical: Replacing a SaaS Without Breaking the Pipeline
+          </h1>
+          <p>
+            The hard part of replacing a tool is almost never rebuilding its
+            features. It's the thing downstream that quietly depends on its
+            exact output. Get that wrong and you didn't cut a cost. You broke
+            the build for everyone, every night, and now it's your name on it.
+          </p>
+
+          <h2>The seam that makes it hard</h2>
+          <p>
+            The tool was a commercial test-management SaaS. A QA team had
+            authored thousands of test cases in it over years, and a
+            continuous-integration pipeline consumed its output every night to
+            drive the automated browser tests that gated every release. The
+            product was fine. But the renewal was real money, and every new need
+            the team had turned into a support ticket and a wait.
+          </p>
+          <p>
+            Replacing it sounds simple until you look at the seam. The
+            automation didn't care about the UI or the features. It cared about
+            the generated files. Rename a field, reorder a step, change a quote
+            style, and tests start failing for reasons that have nothing to do
+            with the application under test. The cost of a replacement isn't the
+            rebuild. It's the risk that the output drifts by one character —
+            across a suite the entire QA org depended on.
+          </p>
+
+          <h2>Emulate the contract, don't reimplement the tool</h2>
+          <p>
+            Underneath, the SaaS stored each test in a structured, portable
+            form, then transformed that into the artifacts the pipeline actually
+            consumed. That transformation step, not the UI and not the feature
+            set, was the real interface between the tool and everything
+            downstream. That was also the leverage point.
+          </p>
+          <p>
+            So I didn't try to reverse-engineer the whole product. I emulated
+            the one contract that mattered: store the test definitions
+            faithfully, then serve them back in exactly the shape the pipeline
+            already expected. It was a deliberately small target — the goal was
+            to rebuild one interface, not a product. The entire downstream
+            pipeline changed by exactly one line. The address it pointed at.
+            Everything upstream of that line ran exactly as before.
+          </p>
+
+          <h2>Proof beats promises</h2>
+          <p>
+            "Trust me, it's the same" is not a migration plan. So the bar was
+            byte-identical: for any given project, the files generated from the
+            new platform had to match the old ones byte for byte. I wired that
+            into an automated check — generate from both systems, compare a
+            SHA-256 of the whole suite — and put it in CI so the QA team could
+            run it themselves, on their own machines, without me in the loop.
+            Green meant safe. Nobody had to take my word for it.
+          </p>
+
+          <h2>Then it's just volume</h2>
+          <p>
+            Once the contract was proven, the rest was migration: thousands of
+            scenarios, a couple thousand folders, and the reusable building
+            blocks the team leaned on, all imported with parity verified at each
+            step. Around that, I rebuilt the parts people touch every day —
+            authoring, test runs, reporting, revision history — to match how the
+            team already worked.
+          </p>
+
+          <h2>The payoff, and the real lesson</h2>
+          <p>
+            I made the call that the renewal was wrong, then made the cutover
+            provably safe enough that the team could verify it themselves and
+            stake their nightly releases on it. No leap of faith required. They
+            adopted it and dropped the renewal. Recurring cost fell by roughly
+            99%, to the price of a small cloud service, and the roadmap belongs
+            to us now. When someone needs a feature, we build it, instead of
+            filing a request and waiting for a vendor to care.
+          </p>
+          <p>
+            But the money is the footnote. The real lesson is that build-vs-buy
+            isn't a debate about features. It's a question about risk. Teams
+            keep paying for tools they've outgrown because switching feels
+            dangerous. Byte-identical output removes the danger: it turns a leap
+            of faith into a diff you can read. Make the cutover provably safe,
+            and the decision makes itself.
+          </p>
+
+          <p style="margin-top: 28px">
+            <a href="/writing.html">&larr; More writing</a>
+          </p>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <a class="brand" href="/"
+          ><span class="mark" aria-hidden="true"></span>Athanasius Wahbah</a
+        >
+        <div class="fnav">
+          <a href="/about.html">About</a>
+          <a href="/experience.html">Experience</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/contact.html">Contact</a>
+          <a href="https://www.linkedin.com/in/athanasiusw" rel="me"
+            >LinkedIn</a
+          >
+        </div>
+        <span class="fmono">Santa Monica, CA</span>
+      </div>
+    </footer>
+    <script src="/reveal.js?v=3" defer></script>
+  </body>
+</html>
