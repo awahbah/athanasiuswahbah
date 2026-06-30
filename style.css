@@ -88,8 +88,10 @@ nav.site:not(.scrolled) :focus-visible {
 }
 
 /* ---------- brand mark (αω lettermark) ---------- */
-/* Bare lime glyphs — same accent lime on dark AND light so the mark
-   reads as one consistent logo (no green-swap on the scrolled nav). */
+/* Two-tone logo system: volt-lime is a light-on-dark accent, so the mark
+   glows lime on dark surfaces (hero, footer) and goes solid ink on light
+   surfaces (scrolled nav) where lime would be illegible. The nav cross-fade
+   carries the color transition. */
 .mark {
   display: inline-flex;
   align-items: baseline;
@@ -98,9 +100,13 @@ nav.site:not(.scrolled) :focus-visible {
   letter-spacing: -0.07em;
   color: var(--accent);
   line-height: 1;
+  transition: color 0.25s ease;
 }
 .mark::before {
   content: "\03B1\03C9"; /* αω */
+}
+nav.site.scrolled .brand .mark {
+  color: var(--l-ink);
 }
 
 /* ---------- mono eyebrow ---------- */
