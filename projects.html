@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta
       name="description"
-      content="Selected work by Athanasius Wahbah — identity lifecycle automation, cloud identity migration tooling, and an internal IT observability platform."
+      content="Selected work by Athanasius Wahbah — identity lifecycle automation, cloud identity migration tooling, an internal IT observability platform, and a byte-identical test-management platform."
     />
     <meta name="author" content="Athanasius Wahbah" />
     <link rel="canonical" href="https://athanasiuswahbah.com/projects.html" />
@@ -17,7 +17,7 @@
     <meta property="og:title" content="Projects — Athanasius Wahbah" />
     <meta
       property="og:description"
-      content="Selected work by Athanasius Wahbah — identity lifecycle automation, cloud identity migration tooling, and an internal IT observability platform."
+      content="Selected work by Athanasius Wahbah — identity lifecycle automation, cloud identity migration tooling, an internal IT observability platform, and a byte-identical test-management platform."
     />
     <meta
       property="og:url"
@@ -29,7 +29,20 @@
     />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="/style.css?v=3" />
-      <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "xeylablajo");</script>
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "xeylablajo");
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -99,6 +112,26 @@
                 collaboration, security, and source control — into a single
                 real-time view of organizational IT and security health. Built
                 with FastAPI and React on Google Cloud Run and Cloud SQL.
+              </p>
+            </article>
+            <article class="work-card reveal">
+              <div class="tags">
+                <span class="tag">Platform</span
+                ><span class="tag">Automation</span>
+              </div>
+              <h2>Internal Test-Management Platform</h2>
+              <p>
+                A self-hosted replacement for a commercial test-management SaaS,
+                built to emit byte-identical automation output to the existing
+                CI pipeline — so the cutover changed a single line of
+                configuration. Migrated thousands of test scenarios with proven
+                byte-for-byte parity, and gave the QA team a self-serve check to
+                verify the switch themselves, cutting the tool's recurring cost
+                by roughly 99%. Built with FastAPI and React on Google Cloud
+                Run.
+                <a href="/posts/byte-identical-saas-replacement.html"
+                  >Read how it worked &rarr;</a
+                >
               </p>
             </article>
           </div>
