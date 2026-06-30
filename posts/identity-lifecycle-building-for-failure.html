@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Managing Identity Lifecycle at Scale: Building for Failure — Athanasius
+      Wahbah
+    </title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta
+      name="description"
+      content="Athanasius Wahbah on building identity lifecycle automation that stays correct under failure — idempotency, reconcile-to-desired-state, partial-failure isolation, and proving the cutover safe."
+    />
+    <meta name="author" content="Athanasius Wahbah" />
+    <link
+      rel="canonical"
+      href="https://athanasiuswahbah.com/posts/identity-lifecycle-building-for-failure.html"
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="Managing Identity Lifecycle at Scale: Building for Failure — Athanasius Wahbah"
+    />
+    <meta
+      property="og:description"
+      content="Identity lifecycle automation that stays correct when events retry, arrive out of order, or partially fail. Idempotency, reconciliation, and proof."
+    />
+    <meta
+      property="og:url"
+      content="https://athanasiuswahbah.com/posts/identity-lifecycle-building-for-failure.html"
+    />
+    <meta
+      property="og:image"
+      content="https://athanasiuswahbah.com/og/identity-lifecycle.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://athanasiuswahbah.com/og/identity-lifecycle.png"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Managing Identity Lifecycle at Scale: Building for Failure",
+        "author": {
+          "@type": "Person",
+          "name": "Athanasius Wahbah",
+          "url": "https://athanasiuswahbah.com/"
+        },
+        "datePublished": "2026-06-30",
+        "mainEntityOfPage": "https://athanasiuswahbah.com/posts/identity-lifecycle-building-for-failure.html"
+      }
+    </script>
+    <link rel="stylesheet" href="/style.css?v=6" />
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "xeylablajo");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <nav class="site">
+      <div class="wrap">
+        <a class="brand" href="/"
+          ><span class="mark" aria-hidden="true"></span>Athanasius Wahbah</a
+        >
+        <div class="links">
+          <a href="/about.html">About</a>
+          <a href="/experience.html">Experience</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main id="main">
+      <div class="wrap">
+        <article class="post">
+          <div class="date">June 30, 2026</div>
+          <h1>Managing Identity Lifecycle at Scale: Building for Failure</h1>
+          <p>
+            Every infrastructure team learns the same lesson eventually: the
+            most dangerous code is the code that runs when nobody's watching. An
+            automated account-creation pipeline that works 99.9% of the time and
+            silently half-creates 0.1% of accounts isn't good enough. That 0.1%
+            is someone stranded without access on their first day, or an
+            offboarded contractor left with access they shouldn't have, and
+            either one gets you called into a room you don't want to be in.
+          </p>
+
+          <h2>The seam that makes it hard</h2>
+          <p>
+            An identity lifecycle platform sounds simple. When the HR system
+            records a new hire, create the corresponding cloud identity. When
+            someone changes roles, update their group memberships. When they
+            leave, disable and archive the account. The individual operations
+            are easy. The hard part is the gap between event and action.
+          </p>
+          <p>
+            Your HR system emits a hire event. A network hiccup means the event
+            arrives twice. Or a role-change event fires before the hire
+            completed, and now you're modifying an account that doesn't exist
+            yet. Or an offboarding runs to completion but the legal-hold step
+            fails silently, so you archived the mailbox but never placed the
+            hold. Or a person moves between two teams fast enough that events
+            arrive out of order, and their final group membership is wrong.
+          </p>
+          <p>
+            In a manually driven world, an admin runs a checklist and catches
+            these things. In an automated world, nobody's watching. The pipeline
+            just runs, and you find out something went wrong three months later
+            when someone realizes they have access they never should have had.
+          </p>
+
+          <h2>Treat actions as idempotent operations on desired state</h2>
+          <p>
+            The instinct is to build an event-driven system: listen for events,
+            translate each one into a cloud API call, fire it, move on. That's
+            seductive because it sounds like what you're building. But it's
+            fragile. An event can fail halfway through. It can retry. It can
+            arrive out of order. And you'll spend the next year writing
+            exception handlers for combinations you didn't anticipate.
+          </p>
+          <p>
+            The safer model inverts the design. Don't treat each event as a
+            command. Treat it as a signal that the desired state has changed,
+            then reconcile to that state idempotently. When a hire event fires,
+            you don't run a single "create account" call. You compute what the
+            final account should look like — username, email, group memberships,
+            licensing — and reconcile the identity to match. If it doesn't
+            exist, create it. If it exists but the groups are wrong, fix them.
+            If it's already correct, do nothing. Run the same reconciliation
+            twice and you get the same result both times.
+          </p>
+          <p>
+            That one choice ripples through the whole system. You can retry
+            failed steps without fear. You can reconcile every account every
+            night as a safety net. You can replay an event from weeks ago and
+            know it lands safely. And when two events arrive out of order, the
+            final state is still correct, because you're reconciling to the last
+            signal you received, not replaying a sequence of commands.
+          </p>
+
+          <h2>Handling the edge cases that will actually happen</h2>
+          <p>
+            Idempotency buys you a lot, but it isn't magic. Some failures need
+            deliberate handling.
+          </p>
+          <p>
+            Partial failures are the most common. An account update has several
+            steps: create the user, assign licensing, add them to their
+            department group, configure email, set the manager relationship. One
+            step fails — licensing times out, or the manager ID doesn't exist
+            yet — and now the account is in an inconsistent state. Wrap each
+            step in its own error handling and retry path so a broken step
+            doesn't poison the whole flow. A failed licensing assignment
+            shouldn't block the email setup.
+          </p>
+          <p>
+            Out-of-order events are the next one. A hire and a team assignment
+            fire in the wrong order, so the team-change tries to add someone to
+            a group before the account exists. The fix is a deterministic
+            reconciliation window: if an action fails because it depends on
+            something that isn't there yet, queue it for the next cycle instead
+            of failing it hard. The account will exist by then.
+          </p>
+          <p>
+            Then there's the override case. A legal hold arrives after an
+            offboarding has already started. The offboarding says "archive this
+            mailbox." The hold says "never touch it." You need high-priority
+            signals that can block lower-priority ones, which means the
+            reconciliation logic checks certain states — under legal hold —
+            first, and refuses destructive operations when they're set. Checks
+            before actions.
+          </p>
+
+          <h2>Making it observable and provably safe</h2>
+          <p>
+            You can't trust an automated system you can't see into, so build the
+            visibility in from the start.
+          </p>
+          <p>
+            Structured audit logging: every state change goes into a queryable
+            log with a timestamp, the identity affected, the before and after,
+            and the system that made the change. When something goes wrong, you
+            trace exactly what happened and when.
+          </p>
+          <p>
+            Dry-run mode: before you flip the switch on production, run the
+            whole thing in report-only mode. It computes what it would do and
+            shows you the diff without making changes. Run it for a week.
+            Spot-check the output. If it looks right, turn it on.
+          </p>
+          <p>
+            Self-verification: every night, reconcile all accounts, not to
+            change anything but to detect drift. If desired state from the HR
+            system doesn't match the cloud state, log it and alert. Most nights
+            everything is green. On the nights it isn't, you know before a user
+            calls you.
+          </p>
+
+          <h2>The payoff</h2>
+          <p>
+            The hard part of lifecycle automation isn't coding the happy path.
+            It's designing a system that stays correct when things go sideways,
+            and proving it's safe before you trust it with thousands of
+            accounts. Get there — idempotent reconciliation, partial-failure
+            isolation, dry-run proof, structured audit logs — and you can move a
+            whole organization from manual provisioning to automation without
+            holding your breath.
+          </p>
+          <p>
+            When the inevitable edge case shows up, you don't panic. You read
+            the logs, understand what happened, and fix the signal. The system
+            reconciles itself on the next cycle. That's the moment identity
+            lifecycle stops being a project and becomes infrastructure. It runs,
+            it's correct, and most weeks nobody thinks about it at all.
+          </p>
+
+          <p style="margin-top: 28px">
+            <a href="/writing.html">&larr; More writing</a>
+          </p>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <a class="brand" href="/"
+          ><span class="mark" aria-hidden="true"></span>Athanasius Wahbah</a
+        >
+        <div class="fnav">
+          <a href="/about.html">About</a>
+          <a href="/experience.html">Experience</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/contact.html">Contact</a>
+          <a href="https://www.linkedin.com/in/athanasiusw" rel="me"
+            >LinkedIn</a
+          >
+        </div>
+        <span class="fmono">Santa Monica, CA</span>
+      </div>
+    </footer>
+    <script src="/reveal.js?v=3" defer></script>
+  </body>
+</html>
