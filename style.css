@@ -88,24 +88,16 @@ nav.site:not(.scrolled) :focus-visible {
 }
 
 /* ---------- brand mark (αω lettermark) ---------- */
-/* Lime tile + dark glyphs — matches the favicon lockup so the mark
-   reads identically on dark and light backgrounds (no green-swap). */
+/* Bare lime glyphs — same accent lime on dark AND light so the mark
+   reads as one consistent logo (no green-swap on the scrolled nav). */
 .mark {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex: none;
-  width: 1.55em;
-  height: 1.55em;
-  border-radius: 0.32em;
-  background: var(--accent);
-  color: var(--accent-ink);
+  align-items: baseline;
   font-family: var(--sans);
   font-weight: 700;
-  font-size: 0.74em;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.07em;
+  color: var(--accent);
   line-height: 1;
-  text-indent: -0.03em; /* optical centering for the tight αω pair */
 }
 .mark::before {
   content: "\03B1\03C9"; /* αω */
@@ -179,7 +171,7 @@ nav.site .brand {
   letter-spacing: -0.01em;
   color: var(--d-ink);
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: 9px;
   transition: color 0.25s ease;
 }
@@ -850,7 +842,7 @@ footer.site .brand {
   color: var(--d-ink);
   font-size: 16px;
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: 9px;
 }
 footer.site .brand .mark {
