@@ -6,6 +6,9 @@
     <title>
       Five Lessons from Running Incident Response — Athanasius Wahbah
     </title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta
       name="description"
       content="Athanasius Wahbah on what actually matters when you're running security incident response — preparation, communication, and disciplined recovery."
@@ -15,6 +18,24 @@
       rel="canonical"
       href="https://athanasiuswahbah.com/posts/lessons-from-incident-response.html"
     />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="Five Lessons from Running Incident Response — Athanasius Wahbah"
+    />
+    <meta
+      property="og:description"
+      content="Athanasius Wahbah on what actually matters when you're running security incident response — preparation, communication, and disciplined recovery."
+    />
+    <meta
+      property="og:url"
+      content="https://athanasiuswahbah.com/posts/lessons-from-incident-response.html"
+    />
+    <meta
+      property="og:image"
+      content="https://athanasiuswahbah.com/headshot.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -29,18 +50,16 @@
         "mainEntityOfPage": "https://athanasiuswahbah.com/posts/lessons-from-incident-response.html"
       }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/style.css?v=3" />
+      <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "xeylablajo");</script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <nav class="site">
       <div class="wrap">
-        <a class="brand" href="/">Athanasius Wahbah</a>
+        <a class="brand" href="/"
+          ><span class="mark" aria-hidden="true"></span>Athanasius Wahbah</a
+        >
         <div class="links">
           <a href="/about.html">About</a>
           <a href="/experience.html">Experience</a>
@@ -51,72 +70,86 @@
       </div>
     </nav>
 
-    <div class="wrap">
-      <article class="post">
-        <div class="date">May 17, 2026</div>
-        <h1>Five Lessons from Running Incident Response</h1>
-        <p>
-          An incident is a bad time to figure out how you respond to incidents.
-          The teams that come through cleanly are almost never the ones with the
-          cleverest tools — they're the ones that decided how they'd operate
-          before anything was on fire. A few things I keep coming back to.
-        </p>
+    <main id="main">
+      <div class="wrap">
+        <article class="post">
+          <div class="date">May 17, 2026</div>
+          <h1>Five Lessons from Running Incident Response</h1>
+          <p>
+            An incident is a bad time to figure out how you respond to
+            incidents. The teams that come through cleanly are almost never the
+            ones with the cleverest tools — they're the ones that decided how
+            they'd operate before anything was on fire. A few things I keep
+            coming back to.
+          </p>
 
-        <h2>1. The preparation is the work</h2>
-        <p>
-          By the time an alert fires, most of the outcome is already determined
-          by what you set up beforehand: logging that actually captures what
-          you'll need, access you can revoke instantly, backups you've tested
-          restoring. You can't build these under pressure. Treat the calm
-          periods as the real preparation.
-        </p>
+          <h2>1. The preparation is the work</h2>
+          <p>
+            By the time an alert fires, most of the outcome is already
+            determined by what you set up beforehand: logging that actually
+            captures what you'll need, access you can revoke instantly, backups
+            you've tested restoring. You can't build these under pressure. Treat
+            the calm periods as the real preparation.
+          </p>
 
-        <h2>2. Contain before you investigate</h2>
-        <p>
-          The urge to fully understand an incident before acting is natural and
-          often wrong. If an account is compromised, disable it and revoke its
-          sessions now; you can reconstruct the timeline after the bleeding
-          stops. Containment buys you the time to investigate calmly.
-        </p>
+          <h2>2. Contain before you investigate</h2>
+          <p>
+            The urge to fully understand an incident before acting is natural
+            and often wrong. If an account is compromised, disable it and revoke
+            its sessions now; you can reconstruct the timeline after the
+            bleeding stops. Containment buys you the time to investigate calmly.
+          </p>
 
-        <h2>3. Communication is half the job</h2>
-        <p>
-          A quiet, competent technical response that nobody can see reads, to a
-          nervous organization, like nothing is happening. Give leadership a
-          steady cadence of plain-language updates: what you know, what you're
-          doing, what you need. It's not overhead — it's what keeps the response
-          from being second-guessed.
-        </p>
+          <h2>3. Communication is half the job</h2>
+          <p>
+            A quiet, competent technical response that nobody can see reads, to
+            a nervous organization, like nothing is happening. Give leadership a
+            steady cadence of plain-language updates: what you know, what you're
+            doing, what you need. It's not overhead — it's what keeps the
+            response from being second-guessed.
+          </p>
 
-        <h2>4. Write it down as you go</h2>
-        <p>
-          A contemporaneous timeline — who did what, when, and why — is worth
-          more than memory, both for the post-incident review and for any legal
-          or compliance follow-up. Capture it live; you will not reconstruct it
-          accurately later.
-        </p>
+          <h2>4. Write it down as you go</h2>
+          <p>
+            A contemporaneous timeline — who did what, when, and why — is worth
+            more than memory, both for the post-incident review and for any
+            legal or compliance follow-up. Capture it live; you will not
+            reconstruct it accurately later.
+          </p>
 
-        <h2>5. The review is where you actually get better</h2>
-        <p>
-          The point of a blameless post-incident review isn't to relive the bad
-          day. It's to turn each incident into one or two concrete changes that
-          make the next one smaller. An incident you don't learn from is just
-          damage.
-        </p>
+          <h2>5. The review is where you actually get better</h2>
+          <p>
+            The point of a blameless post-incident review isn't to relive the
+            bad day. It's to turn each incident into one or two concrete changes
+            that make the next one smaller. An incident you don't learn from is
+            just damage.
+          </p>
 
-        <p style="margin-top: 28px">
-          <a href="/writing.html">&larr; More writing</a>
-        </p>
-      </article>
-    </div>
+          <p style="margin-top: 28px">
+            <a href="/writing.html">&larr; More writing</a>
+          </p>
+        </article>
+      </div>
+    </main>
 
     <footer class="site">
       <div class="wrap">
-        &copy; <span id="y"></span> Athanasius Wahbah &middot; Santa Monica, CA
+        <a class="brand" href="/"
+          ><span class="mark" aria-hidden="true"></span>Athanasius Wahbah</a
+        >
+        <div class="fnav">
+          <a href="/about.html">About</a>
+          <a href="/experience.html">Experience</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/contact.html">Contact</a>
+          <a href="https://www.linkedin.com/in/athanasiusw" rel="me"
+            >LinkedIn</a
+          >
+        </div>
+        <span class="fmono">Santa Monica, CA</span>
       </div>
     </footer>
-    <script>
-      document.getElementById("y").textContent = new Date().getFullYear();
-    </script>
+    <script src="/reveal.js?v=3" defer></script>
   </body>
 </html>

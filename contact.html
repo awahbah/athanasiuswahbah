@@ -4,24 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact — Athanasius Wahbah</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta
       name="description"
-      content="Get in touch with Athanasius Wahbah — technology engineer in Santa Monica, California."
+      content="Get in touch with Athanasius Wahbah — technology and operations leader in Santa Monica, California."
     />
     <meta name="author" content="Athanasius Wahbah" />
     <link rel="canonical" href="https://athanasiuswahbah.com/contact.html" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Contact Athanasius Wahbah" />
+    <meta
+      property="og:description"
+      content="Get in touch with Athanasius Wahbah — technology and operations leader in Santa Monica, California."
     />
-    <link rel="stylesheet" href="/style.css" />
+    <meta
+      property="og:url"
+      content="https://athanasiuswahbah.com/contact.html"
+    />
+    <meta
+      property="og:image"
+      content="https://athanasiuswahbah.com/headshot.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="/style.css?v=3" />
+      <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "xeylablajo");</script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <nav class="site">
       <div class="wrap">
-        <a class="brand" href="/">Athanasius Wahbah</a>
+        <a class="brand" href="/"
+          ><span class="mark" aria-hidden="true"></span>Athanasius Wahbah</a
+        >
         <div class="links">
           <a href="/about.html">About</a>
           <a href="/experience.html">Experience</a>
@@ -32,32 +48,51 @@
       </div>
     </nav>
 
-    <div class="wrap">
-      <h1 class="page-title">Contact</h1>
-      <main>
-        <section>
-          <p class="lead">
-            The best way to reach me is through LinkedIn. I'm based in Santa
-            Monica, California.
-          </p>
-          <div class="links-row">
+    <header class="page-head">
+      <div class="wrap">
+        <span class="eyebrow reveal">Get in touch</span>
+        <h1 class="reveal">Contact Athanasius Wahbah</h1>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="lblock">
+        <div class="wrap">
+          <div class="prose reveal">
+            <p>
+              The best way to reach me is through LinkedIn. I'm based in Santa
+              Monica, California.
+            </p>
+          </div>
+          <div class="links-row reveal">
             <a href="https://www.linkedin.com/in/athanasiusw" rel="me"
               >LinkedIn</a
             >
             <a href="https://github.com/awahbah" rel="me">GitHub</a>
             <a href="https://twitter.com/athanasius_w" rel="me">X / Twitter</a>
           </div>
-        </section>
-      </main>
-    </div>
+        </div>
+      </section>
+    </main>
 
     <footer class="site">
       <div class="wrap">
-        &copy; <span id="y"></span> Athanasius Wahbah &middot; Santa Monica, CA
+        <a class="brand" href="/"
+          ><span class="mark" aria-hidden="true"></span>Athanasius Wahbah</a
+        >
+        <div class="fnav">
+          <a href="/about.html">About</a>
+          <a href="/experience.html">Experience</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/contact.html">Contact</a>
+          <a href="https://www.linkedin.com/in/athanasiusw" rel="me"
+            >LinkedIn</a
+          >
+        </div>
+        <span class="fmono">Santa Monica, CA</span>
       </div>
     </footer>
-    <script>
-      document.getElementById("y").textContent = new Date().getFullYear();
-    </script>
+    <script src="/reveal.js?v=3" defer></script>
   </body>
 </html>
