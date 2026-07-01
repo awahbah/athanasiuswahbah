@@ -3,8 +3,8 @@
   <url><loc>https://athanasiuswahbah.com/</loc><lastmod>2026-06-29</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://athanasiuswahbah.com/about.html</loc><lastmod>2026-06-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://athanasiuswahbah.com/experience.html</loc><lastmod>2026-06-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://athanasiuswahbah.com/projects.html</loc><lastmod>2026-06-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://athanasiuswahbah.com/writing.html</loc><lastmod>2026-06-29</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://athanasiuswahbah.com/projects.html</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://athanasiuswahbah.com/writing.html</loc><lastmod>2026-06-30</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://athanasiuswahbah.com/contact.html</loc><lastmod>2026-06-29</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://athanasiuswahbah.com/posts/lessons-from-incident-response.html</loc><lastmod>2026-06-29</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://athanasiuswahbah.com/posts/conditional-access-that-works.html</loc><lastmod>2026-06-29</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
@@ -13,4 +13,5 @@
   <url><loc>https://athanasiuswahbah.com/posts/build-vs-buy-internal-tools.html</loc><lastmod>2026-06-29</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://athanasiuswahbah.com/posts/identity-lifecycle-building-for-failure.html</loc><lastmod>2026-06-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
   <url><loc>https://athanasiuswahbah.com/posts/byte-identical-saas-replacement.html</loc><lastmod>2026-06-29</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://athanasiuswahbah.com/posts/competitive-intelligence-cockpit.html</loc><lastmod>2026-06-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
 </urlset>

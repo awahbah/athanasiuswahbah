@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Decision-Ready: A Competitive-Intelligence Cockpit That Runs on Live Data
+      — Athanasius Wahbah
+    </title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta
+      name="description"
+      content="Athanasius Wahbah on building a competitive-intelligence cockpit that sits on top of a research subscription a team already pays for — pulling live regulatory and clinical data, monitoring itself, and staying honest about what it knows."
+    />
+    <meta name="author" content="Athanasius Wahbah" />
+    <link
+      rel="canonical"
+      href="https://athanasiuswahbah.com/posts/competitive-intelligence-cockpit.html"
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:title"
+      content="Decision-Ready: A Competitive-Intelligence Cockpit That Runs on Live Data — Athanasius Wahbah"
+    />
+    <meta
+      property="og:description"
+      content="Turning a research firehose into a decision-ready cockpit — live regulatory and clinical data, self-monitoring alerts, and honesty about the limits."
+    />
+    <meta
+      property="og:url"
+      content="https://athanasiuswahbah.com/posts/competitive-intelligence-cockpit.html"
+    />
+    <meta
+      property="og:image"
+      content="https://athanasiuswahbah.com/headshot.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:image"
+      content="https://athanasiuswahbah.com/headshot.jpg"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Decision-Ready: A Competitive-Intelligence Cockpit That Runs on Live Data",
+        "author": {
+          "@type": "Person",
+          "name": "Athanasius Wahbah",
+          "url": "https://athanasiuswahbah.com/"
+        },
+        "datePublished": "2026-06-30",
+        "mainEntityOfPage": "https://athanasiuswahbah.com/posts/competitive-intelligence-cockpit.html"
+      }
+    </script>
+    <link rel="stylesheet" href="/style.css?v=6" />
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "xeylablajo");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <nav class="site">
+      <div class="wrap">
+        <a class="brand" href="/"
+          ><span class="mark" aria-hidden="true"></span>Athanasius Wahbah</a
+        >
+        <div class="links">
+          <a href="/about.html">About</a>
+          <a href="/experience.html">Experience</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main id="main">
+      <div class="wrap">
+        <article class="post">
+          <div class="date">June 30, 2026</div>
+          <h1>
+            Decision-Ready: A Competitive-Intelligence Cockpit That Runs on Live
+            Data
+          </h1>
+          <p>
+            A leadership team in a specialty-pharma franchise already paid for a
+            good market-intelligence subscription — the kind that aggregates
+            broker research, transcripts, filings, expert calls, and clinical
+            and regulatory news into one searchable place. The data wasn't the
+            problem. The problem was that a search box is not a decision. Every
+            morning someone still had to go dig, read, connect the dots, and
+            figure out what actually moved overnight and whether it mattered.
+          </p>
+
+          <h2>Sit on top of what they already own</h2>
+          <p>
+            The instinct in this situation is to buy another platform. I did the
+            opposite. Instead of replacing the subscription, I built a cockpit
+            that sits on top of it and does the one thing the raw firehose
+            can't: turn it into a curated, franchise-specific view of what
+            changed, who's a threat, and what's coming. The pitch was
+            deliberately blunt —
+            <em>you already pay for the data; we make it decision-ready.</em> A
+            daily brief instead of a search. A threat board ranking the
+            competitive set instead of a document list. A radar of dated
+            catalysts instead of a calendar someone maintains by hand.
+          </p>
+
+          <h2>Live where it can be, honest where it can't</h2>
+          <p>
+            A demo that shows fake data is a brochure. So wherever a credible
+            public source existed, the cockpit pulled it live. The trials board
+            makes a real call to the public clinical-trials registry and renders
+            the actual studies — real identifiers, real status. But a live demo
+            that dies when the venue's Wi-Fi hiccups is worse than no demo, so
+            every live source falls back to a validated snapshot the moment the
+            network misbehaves. The room never sees a broken screen, and nobody
+            has to pray to the demo gods beforehand.
+          </p>
+
+          <h2>It keeps itself current</h2>
+          <p>
+            The part I'm proudest of isn't a screen — it's that the cockpit
+            stays current on its own. A server-side poller sweeps public sources
+            on their real publication cadence: regulatory filings hourly,
+            clinical-trial changes every few hours, drug-label updates daily. It
+            diffs each sweep against saved state using stable per-item keys and
+            content hashes, so it detects genuine changes rather than
+            re-alerting on noise. The first sweep of any source records a silent
+            baseline — no alert flood on cold start — and only real deltas after
+            that raise an event. Material changes score as high severity and
+            dispatch to the team's chat as an alert; routine ones stay quiet.
+            The service scales to zero when idle and a scheduler wakes it on a
+            cron, so it runs around the clock without running up a bill.
+          </p>
+
+          <h2>One switch from demo to live</h2>
+          <p>
+            Under all of it is a single data-source interface. The demo runs on
+            a curated, offline adapter with simulated latency, so it's fast,
+            self-contained, and needs no credentials. Behind the same interface
+            sits a live adapter that speaks to the real enterprise API, mapped
+            into the identical domain types — dormant until the client
+            provisions access. Going live is one environment variable; the UI
+            never changes. Persistence is pluggable the same way: a zero-infra
+            local store for the demo, a managed cloud database for production,
+            selected by config. The demo and the real product are the same code
+            wearing different adapters.
+          </p>
+
+          <h2>Honesty as the credibility play</h2>
+          <p>
+            The temptation with an AI-driven brief is to make it look
+            authoritative. I went the other direction. Every generated brief can
+            reveal the exact API call that produced it — the real query, not a
+            hand-wave. Every estimate that rests on a single source carries a
+            confidence marker and renders a flag in the interface. In a room
+            full of people whose job is to be skeptical of vendors, showing your
+            work builds more trust than polish does.
+          </p>
+
+          <h2>The real lesson</h2>
+          <p>
+            The easy version of this project was a slide deck full of mockups.
+            The version that actually persuades is one where the data is real,
+            the app monitors itself, and the tool is candid about the edges of
+            what it knows. The demo isn't a picture of the product — it
+            <em>is</em> the product, running, on live data, in the room. That's
+            the whole argument: when the thing works in front of you, you don't
+            need to be sold on it. And the same discipline that makes a
+            convincing demo — real sources, honest limits, one clean seam
+            between what's shown and what's swapped in later — is exactly what
+            makes the production version trustworthy too.
+          </p>
+
+          <p style="margin-top: 28px">
+            <a href="/writing.html">&larr; More writing</a>
+          </p>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site">
+      <div class="wrap">
+        <a class="brand" href="/"
+          ><span class="mark" aria-hidden="true"></span>Athanasius Wahbah</a
+        >
+        <div class="fnav">
+          <a href="/about.html">About</a>
+          <a href="/experience.html">Experience</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/writing.html">Writing</a>
+          <a href="/contact.html">Contact</a>
+          <a href="https://www.linkedin.com/in/athanasiusw" rel="me"
+            >LinkedIn</a
+          >
+        </div>
+        <span class="fmono">Santa Monica, CA</span>
+      </div>
+    </footer>
+    <script src="/reveal.js?v=3" defer></script>
+  </body>
+</html>
