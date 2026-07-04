@@ -10,6 +10,14 @@
     <webMaster>hello@athanasiuswahbah.com (Athanasius Wahbah)</webMaster>
 
     <item>
+      <title>The Bill Is a Ledger</title>
+      <link>https://athanasiuswahbah.com/posts/the-bill-is-a-ledger.html</link>
+      <guid isPermaLink="true">https://athanasiuswahbah.com/posts/the-bill-is-a-ledger.html</guid>
+      <pubDate>Fri, 03 Jul 2026 16:00:00 GMT</pubDate>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Athanasius Wahbah</dc:creator>
+      <description>The AWS bill is a diagnostic tool — what a $300K-a-month estate reveals about architecture, discipline, and build-vs-buy.</description>
+    </item>
+    <item>
       <title>Five Lessons from Running Incident Response</title>
       <link>https://athanasiuswahbah.com/posts/lessons-from-incident-response.html</link>
       <guid isPermaLink="true">https://athanasiuswahbah.com/posts/lessons-from-incident-response.html</guid>
